@@ -7,5 +7,11 @@
 </head>
 <body>
     <h1>test for drf project</h1>
+    <hr>
+    <ul>
+        {% for todo in todos %}
+            <li>{{ todo.title }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
