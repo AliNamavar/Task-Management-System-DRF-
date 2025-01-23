@@ -5,8 +5,12 @@ from rest_framework import status
 from .models import todo
 from .serializer import TodoSerializer
 from rest_framework.decorators import api_view
+from rest_framework.views import APIView
 # Create your views here.
-#CRUD
+
+#region function views\
+
+
 @api_view(['GET', 'POST'])
 def all_todos(request: Request):
     if request.method == 'GET':
@@ -45,4 +49,52 @@ def tidi_detail_view(request:Request, todo_id:int):
     
     elif request.method == 'DELETE':
         Todo.delete()
+        return Response(None, status.HTTP_204_NO_CONTENT)
+
+
+#region class base views
+
+class TodosListApi(APIView):
+    def get(self, request:Request):
+        todos = todo.objects.all()
+        serializer = TodoSerializer(todos, many=True)
+
+        return Response(serializer.data, status.HTTP_200_OK)
+    
+    def post(self, request:Request):
+        serializer = TodoSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status.HTTP_201_CREATED)
+        
+
+        return Response(None, status.HTTP_400_BAD_REQUEST)
+
+class TodosDetailApiView(APIView):
+
+    def get_todo(self, todo_id):
+        try:
+            todos = todo.objects.get(pk=todo_id)
+            return todos
+        except todo.DoesNotExist:
+            return Response(None, status.HTTP_404_NOT_FOUND)
+
+
+    def get(self, request:Request, todo_id:int):
+        todos = self.get_todo(todo_id) 
+        serializer = TodoSerializer(todos)
+        return Response(serializer.data, status.HTTP_200_OK)
+    
+    def put(self, request:Request, todo_id):
+        todos = self.get_todo(todo_id)
+        serializer = TodoSerializer(todos, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status.HTTP_202_ACCEPTED)
+        
+        return Response(None, status.HTTP_400_BAD_REQUEST)      
+    
+    def delete(self, request:Request, todo_id):
+        todos = self.get_todo(todo_id)
+        todos.delete()
         return Response(None, status.HTTP_204_NO_CONTENT)
