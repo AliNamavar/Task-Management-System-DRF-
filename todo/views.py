@@ -6,6 +6,7 @@ from .models import todo
 from .serializer import TodoSerializer
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
+from rest_framework import generics, mixins
 # Create your views here.
 
 #region function views\
@@ -51,6 +52,7 @@ def tidi_detail_view(request:Request, todo_id:int):
         Todo.delete()
         return Response(None, status.HTTP_204_NO_CONTENT)
 
+#endregion
 
 #region class base views
 
@@ -78,6 +80,7 @@ class TodosDetailApiView(APIView):
             return todos
         except todo.DoesNotExist:
             return Response(None, status.HTTP_404_NOT_FOUND)
+        #todo:fox this
 
 
     def get(self, request:Request, todo_id:int):
@@ -98,3 +101,36 @@ class TodosDetailApiView(APIView):
         todos = self.get_todo(todo_id)
         todos.delete()
         return Response(None, status.HTTP_204_NO_CONTENT)
+    
+#endregion
+
+#region mixins
+
+class TodoMixinsaList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
+    queryset = todo.objects.order_by('priority').all()
+    serializer_class = TodoSerializer
+
+    def get(self, request:Request):
+        return self.list(request)
+    
+
+    def post(self, request:Request):
+        return self.create(request)
+
+class TodoMixinsDetailApiView(mixins.RetrieveModelMixin ,mixins.UpdateModelMixin, mixins.DestroyModelMixin, generics.GenericAPIView):
+    queryset = todo.objects.order_by('priority').all()
+    serializer_class = TodoSerializer
+
+    def get(self, request:Request, pk):
+        return self.retrieve(request, pk)
+
+
+    def put(self, request:Request, pk):
+        return self.update(request, pk)
+
+    def delete(self, request:Request, pk):
+        return self.destroy(request, pk)
+
+
+
+#endregion
