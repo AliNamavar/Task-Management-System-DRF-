@@ -12,6 +12,7 @@ from django.contrib.auth import get_user_model
 from rest_framework.pagination import PageNumberPagination, LimitOffsetPagination
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
+from drf_spectacular.utils import extend_schema
 # Create your views here.
 
 User = get_user_model()
@@ -63,6 +64,10 @@ def tidi_detail_view(request:Request, todo_id:int):
 #region class base views
 
 class TodosListApi(APIView):
+    @extend_schema(
+        request=TodoSerializer,
+        responses={201: TodoSerializer},
+    )
     def get(self, request:Request):
         todos = todo.objects.all()
         serializer = TodoSerializer(todos, many=True)

@@ -8,7 +8,7 @@ class TodoSerializer(serializers.ModelSerializer):
 
     def validate_priority(self, priority):
         if priority < 10 or priority > 20:
-            serializers.ValidationError("priority cant most be in range 10 to 20")
+            raise serializers.ValidationError("priority cant most be in range 10 to 20")
         return priority
 
     class Meta:
