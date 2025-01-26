@@ -66,19 +66,30 @@ A comprehensive **Task Management System** built using Django Rest Framework (DR
 
 ## API Endpoints
 
-- **Authentication**:
+<!-- - **Authentication**:
   - `POST /api/token/`: Obtain a JWT token.
-  - `POST /api/token/refresh/`: Refresh the JWT token.
+  - `POST /api/token/refresh/`: Refresh the JWT token. -->
 
-- **Tasks**:
-  - `GET /tasks/`: Retrieve a list of tasks.
-  - `POST /tasks/`: Create a new task.
-  - `GET /tasks/<id>/`: Retrieve a specific task.
-  - `PUT /tasks/<id>/`: Update a task.
-  - `DELETE /tasks/<id>/`: Delete a task.
+  - **Additional Endpoints**:
+  <!-- - `POST /api/schema/`: Obtain a JWT token. -->
+  - `POST /api/schema/swagger/`: Refresh the JWT token.
+
+<!-- - **Tasks With Generics**:
+  - `GET /generics/`: Retrieve a list of tasks.
+  - `POST /generics/`: Create a new task.
+  - `GET /generics/<pk>/`: Retrieve a specific task.
+  - `PUT /generics/<pk>/`: Update a task.
+  - `DELETE /generics/<pk>/`: Delete a task.
+
+  - **Tasks With ViewSets**:
+  - `GET /viewsets/`: Retrieve a list of tasks.
+  - `POST /viewsets/`: Create a new task.
+  - `GET /viewsets/<int:pk>/`: Retrieve a specific task.
+  - `PUT /viewsets/<int:pk>/`: Update a task.
+  - `DELETE /viewsets/<int:pk>/`: Delete a task.
 
 - **Users**:
-  - `GET /users/`: Retrieve a list of users.
+  - `GET /users/`: Retrieve a list of users. -->
 
 ## Technologies Used
 
