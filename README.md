@@ -72,7 +72,7 @@ A comprehensive **Task Management System** built using Django Rest Framework (DR
 
   - **Additional Endpoints**:
   <!-- - `POST /api/schema/`: Obtain a JWT token. -->
-  - `POST /api/schema/swagger/`: Refresh the JWT token.
+  - `POST /api/schema/swagger/`: Swagger UI for API documentation.
 
 <!-- - **Tasks With Generics**:
   - `GET /generics/`: Retrieve a list of tasks.
