@@ -91,11 +91,9 @@ A comprehensive **Task Management System** built using Django Rest Framework (DR
 
 ## Screenshots
 
-![Swagger UI](https://via.placeholder.com/800x400?text=Swagger+UI+Screenshot)
+![Swagger UI](Screenshot%20from%202025-01-26%2018-24-17.png)
 *Interactive API documentation with Swagger UI.*
 
-![Postman Testing](https://via.placeholder.com/800x400?text=Postman+Testing+Screenshot)
-*API testing using Postman.*
 
 ## How to Contribute
 

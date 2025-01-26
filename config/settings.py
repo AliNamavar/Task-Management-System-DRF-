@@ -146,8 +146,8 @@ REST_FRAMEWORK = {
 }   
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Your Project API',
-    'DESCRIPTION': 'Your project description',
+    'TITLE': 'Task Management System (DRF)',
+    'DESCRIPTION': 'A comprehensive Task Management System built using Django Rest Framework (DRF). This project demonstrates advanced API development techniques, showcasing best practices for building secure, scalable, and user-friendly RESTful services.',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
     # OTHER SETTINGS
