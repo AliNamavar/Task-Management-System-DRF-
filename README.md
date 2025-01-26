@@ -91,7 +91,7 @@ A comprehensive **Task Management System** built using Django Rest Framework (DR
 
 ## Screenshots
 
-![Swagger UI](Screenshot%20from%202025-01-26%2018-24-17.png)
+![Swagger UI](/img/Screenshot%20from%202025-01-26%2018-24-17.png)
 *Interactive API documentation with Swagger UI.*
 
 
